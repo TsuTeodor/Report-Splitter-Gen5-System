@@ -375,6 +375,11 @@ namespace SplitterGen5_SystemTest_v2
                         string final_part_html_tc = "\n    <table class=\"GroupEndTable\">\n      <tr>\n        <td>End of Test Group: " + Regex.Escape(groupName) + "</td>\n      </tr>\n    </table>";
                         content_testCase += final_part_html_tc;
                         content_testCase += final_report_html_body;
+
+                        /* change overall status of the test based on the content: if passed or failed */
+                        content_testCase = ChangeStatusOfTestBasedOnContent(content_testCase);
+
+                        /* save the testcase in html format */
                         CreateAndSaveTestGroup(content_testCase, groupName);
                     }
 
@@ -1044,14 +1049,23 @@ namespace SplitterGen5_SystemTest_v2
             }
             string GetTestTableResultForTest(string testGroupName)
             {
+
                 string html_after_results = "<div class=\"Heading4\">Test Case Results</div>";
                 int html_after_results_index = htmlContent.IndexOf(html_after_results);
 
                 /* substract the html content till start of table*/
                 const string start_of_table = "<td class=\"DefineCell\" colspan=\"2\">";
                 int index_start_of_table = htmlContent.IndexOf(start_of_table);
-                string content_html_till_table = htmlContent.Substring(0, index_start_of_table);
 
+
+                /* getting out the statistics table*/
+                string statistics_table = "<div class=\"Heading4\">Statistics</div>";
+                int statistics_table_index = htmlContent.IndexOf(statistics_table);
+
+                //string content_html_till_table = htmlContent.Substring(0, index_start_of_table);
+                string content_html_till_table = htmlContent.Substring(0, statistics_table_index);
+                string between_TC_details_and_actually_result = htmlContent.Substring(html_after_results_index, index_start_of_table - html_after_results_index);
+                content_html_till_table += between_TC_details_and_actually_result;
                 /* substract the relevant table content */
                 var i_value_current_tc = GetTestGroupNameValue(htmlContent, testGroupName);
                 if(i_value_current_tc == null)
@@ -1119,6 +1133,35 @@ namespace SplitterGen5_SystemTest_v2
                 substr_content_table += htmlContent.Substring(testModuleInfo_index, testcaseDetails_index - testModuleInfo_index);
                 string combined_results = content_html_till_table + substr_content_table;
                 return combined_results;
+            }
+            Boolean GetStatusOfTestBasedOnContent(string content)
+            {
+                Boolean result = true;
+                string pattern_to_find_overall_status = @"class=""NegativeResultCell"">";
+                int pattern_to_find_overall_status_index = content.IndexOf(pattern_to_find_overall_status);
+                if(pattern_to_find_overall_status_index > 0)
+                {
+                    result = false;
+                }
+                return result;
+            }
+            string ChangeStatusOfTestBasedOnContent(string content)
+            {
+                string replacement = "";
+                string pattern = "<td class=\"NegativeResult\">Test failed</td>";
+
+                if (GetStatusOfTestBasedOnContent(content))
+                {
+                    /* Positive result */
+                    replacement = "<td class=\"PositiveResult\">Test passed</td>";
+                }
+                else
+                {
+                    /* Negative result - No need to change since it is the default case */
+                    return content;
+                }
+                content = Regex.Replace(content, pattern, replacement);
+                return content;
             }
         }
 
