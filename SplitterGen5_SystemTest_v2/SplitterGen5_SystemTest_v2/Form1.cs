@@ -1061,11 +1061,21 @@ namespace SplitterGen5_SystemTest_v2
                 /* getting out the statistics table*/
                 string statistics_table = "<div class=\"Heading4\">Statistics</div>";
                 int statistics_table_index = htmlContent.IndexOf(statistics_table);
+                string content_html_till_table = "";
 
                 //string content_html_till_table = htmlContent.Substring(0, index_start_of_table);
-                string content_html_till_table = htmlContent.Substring(0, statistics_table_index);
-                string between_TC_details_and_actually_result = htmlContent.Substring(html_after_results_index, index_start_of_table - html_after_results_index);
-                content_html_till_table += between_TC_details_and_actually_result;
+
+                //only if there is a statistics table inside the report
+                if (statistics_table_index > 0)
+                {
+                    content_html_till_table = htmlContent.Substring(0, statistics_table_index);
+                    string between_TC_details_and_actually_result = htmlContent.Substring(html_after_results_index, index_start_of_table - html_after_results_index);
+                    content_html_till_table += between_TC_details_and_actually_result;
+                }
+                else
+                {
+                    content_html_till_table = htmlContent.Substring(0, index_start_of_table);
+                }
                 /* substract the relevant table content */
                 var i_value_current_tc = GetTestGroupNameValue(htmlContent, testGroupName);
                 if(i_value_current_tc == null)
