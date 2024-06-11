@@ -1,0 +1,10 @@
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\bin\Debug\SplitterGen5_SystemTest_v2.exe.config
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\bin\Debug\SplitterGen5_SystemTest_v2.exe
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\bin\Debug\SplitterGen5_SystemTest_v2.pdb
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.csproj.AssemblyReference.cache
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.Form1.resources
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.Properties.Resources.resources
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.csproj.GenerateResource.cache
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.csproj.CoreCompileInputs.cache
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.exe
+C:\Users\simite3\source\repos\SplitterGen5_SystemTest_v2\SplitterGen5_SystemTest_v2\obj\Debug\SplitterGen5_SystemTest_v2.pdb
